@@ -15,6 +15,15 @@ class PlayersRepository {
         $this->connection = $factory->getConnection();
     }
 
+    public function getAll(){
+        $sql = "SELECT * FROM tb_jogadores";
+
+        $table = $this->connection->query($sql);
+        $resultados = $table->fetchAll(PDO::FETCH_ASSOC);
+
+        return $resultados;
+    }
+
     public function getRandomPlayers(int $numberOfPlayers){
 
         $sql = "SELECT * FROM tb_jogadores as j INNER JOIN tb_selecoes as s ON j.selecao = s.id ORDER BY RAND() LIMIT $numberOfPlayers";

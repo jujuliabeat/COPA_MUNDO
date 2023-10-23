@@ -17,6 +17,15 @@ class PlayerController {
         $this->repository = new PlayersRepository();
     }
 
+    public function getAll(Request $request, Response $response, array $params){
+
+        //Procure uma arquivo TeamRepository um método que retorne uma lista de todoas as seleções;
+        //Normalmente a operação se parece com algo do tipo: SELECT * FROM ...
+        $data['players'] = $this->repository->getAll();
+
+        return $this->container->view->render($response, 'player.php', $data);
+    }
+
     public function getById(Request $request, Response $response, array $params){
 
         //para obter os parâmetros da URL substitua as interrogações por "$params['id']"
@@ -26,12 +35,13 @@ class PlayerController {
         //Substitua as interrogações por "getById"
         $data['player'] = $this->repository->getById($id);
 
-        print "<h1>Essa rota não possui uma tela associada</h1><br/>";
 
-        print_r($data);
-        exit;
+        // print "<h1>Essa rota não possui uma tela associada</h1><br/>";
 
-        return $this->container->view->render($response, 'jogador.php', $data);
+        // print_r($data);
+        // exit;
+
+        return $this->container->view->render($response, 'single_player.php', $data);
     }
 
     public function getByName(Request $request, Response $response, array $params){
@@ -41,14 +51,15 @@ class PlayerController {
         $name = $params['name'];
 
         //Substitua as interrogações por "getByName"
-        $data['players'] = $this->repository->getByName($name);
+        $data['player'] = $this->repository->getByName($name);
 
-        print "<h1>Essa rota não possui uma tela associada</h1><br/>";
-        print_r($data);
-        exit;
+        // print "<h1>Essa rota não possui uma tela associada</h1><br/>";
+        // print_r($data);
+        // exit;
 
-        return $this->container->view->render($response, 'nomeJogador.php', $data);
+        return $this->container->view->render($response, 'single_player.php', $data);
     }
+
     public function getByTeamId(Request $request, Response $response, array $params){
         $teamId = $params['id'];
 
