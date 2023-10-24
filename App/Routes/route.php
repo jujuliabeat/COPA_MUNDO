@@ -25,18 +25,27 @@ $app = new App($settings);
  $container['BASE_PATH'] = 'http://localhost:8080';
 
 //Adicione suas rotas aqui!
+//Adicione suas rotas aqui!
 $app->get('/', HomeController::class . ":home");
 $app->get('/teams', TeamController::class . ":getAll");
 $app->get('/teams/{id}', TeamController::class . ":getById");
+
 $app->get('/teams/group/{group}', TeamController::class . ":getByGroup");
-$app->get('/teams/name/{name}', TeamController::class . ":getByName");
+$app->get('/teams/abrev/{abrev}', TeamController::class . ":getByAbrev");
+$app->get('/teams/selecao/{selecao}', TeamController::class . ":getByName");
+
 
 $app->get('/players', PlayerController::class . ":getAll");
 $app->get('/players/{id}', PlayerController::class . ":getById");
+$app->get('/players/selecao/{idSelecao}', PlayerController::class . ":getByTeamId");
 $app->get('/players/name/{name}', PlayerController::class . ":getByName");
-$app->get('/players/team/{id}', PlayerController::class . ":getByTeamId");
-$app->get('/players/position/{pos}', PlayerController::class . ":getByPosition"); 
+$app->get('/players/posicao/{posicao}', PlayerController::class . ":getByPosition");
+
 
 $app->get('/players/search/{search}', PlayerController::class . ":getBySearchParam");
+
+
+$app->get('/install', InstallationController::class . ":install");
+
 
 $app->run();

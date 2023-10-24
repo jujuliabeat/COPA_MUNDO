@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Copa do Mundo</title>
 
     <link rel="stylesheet" href="http://localhost:8080/Public/assets/styles/bootstrap.min.css">
     <link rel="stylesheet" href="http://localhost:8080/Public/assets/styles/style.css">
@@ -36,14 +36,13 @@
         
         </header>
 
-        <h2 class="title">Album de IFigurinhas</h2>
+        <h2 class="title">Album de Figurinhas</h2>
         <h5 class="subtitle">Catar 2022</h5>
-
         <div class="container mb-3 p-0">
 
         <div class="input-group input-group-lg">
-            <input type="text" class="form-control" placeholder="brasil...">
-            <button class="btn btn-primary" type="button" id="button-addon2">procure sua seleção</button>
+            <input type="text" class="form-control" placeholder="Brasil...">
+            <button class="btn btn-primary" type="button" id="button-addon2">Procure sua seleção</button>
         </div>
       
         </div>
@@ -85,7 +84,7 @@
                     </a>
                 </div>
 
-                <?php endforeach; ?>
+                <?php endforeach; ?>>
 
             </div>
         </div>

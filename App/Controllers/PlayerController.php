@@ -33,7 +33,7 @@ class PlayerController {
         $id = $params['id'];
         
         //Substitua as interrogações por "getById"
-        $data['player'] = $this->repository->getById($id);
+        $data['players'] = $this->repository->getById($id);
 
 
         // print "<h1>Essa rota não possui uma tela associada</h1><br/>";
@@ -51,7 +51,7 @@ class PlayerController {
         $name = $params['name'];
 
         //Substitua as interrogações por "getByName"
-        $data['player'] = $this->repository->getByName($name);
+        $data['players'] = $this->repository->getByName($name);
 
         // print "<h1>Essa rota não possui uma tela associada</h1><br/>";
         // print_r($data);

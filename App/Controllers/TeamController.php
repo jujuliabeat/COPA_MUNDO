@@ -43,18 +43,16 @@ class TeamController {
         //Os dados buscados aqui estarão disponíveis nesse template para uso
         return $this->container->view->render($response, 'teams.php', $data);
     }
-
-    public function getById(Request $request, Response $response, array $params){
-
+    
+    public function getById(Request $request, Response $response, array $params) {
         $teamId = $params['id'];
-
-        $data['team'] = $this->teamRepository->getById($teamId);
-        $data['players'] = $this->playerRepository->getRandomPlayers($teamId);
-
         
-
+        $data['team'] = $this->teamRepository->getById($teamId);
+        $data['players'] = $this->playerRepository->getByTeamId($teamId);
+    
         return $this->container->view->render($response, 'team.php', $data);
     }
+    
 
     public function getByAbrev(Request $request, Response $response, array $params){
 
@@ -69,16 +67,19 @@ class TeamController {
 
         $data['group'] = $this->teamRepository->getByGroup($teamGroup);
 
-        return $this->container->view->render($response, 'Group.php', $data);
+        return $this->container->view->render($response, 'group.php', $data);
     }
 
-    public function getByName(Request $request, Response $response, array $params){
+    public function getByName(Request $request, Response $response, array $params){        
+        $selecao = $params['selecao'];
 
-        $teamName = $params['name'];
+        $data['team'] = $this->teamRepository->getByName($selecao);
 
-        $data['name'] = $this->teamRepository->getByName($teamName);
+        //  print "<h1>Essa rota não possui uma tela associada</h1><br/>";
+        // print_r($data);
+        // exit;
 
-        return $this->container->view->render($response, 'searchedTeam.php', $data);
+        return $this->container->view->render($response, 'team.php', $data);
     }
 
 
