@@ -54,11 +54,11 @@ class TeamRepository {
         return $resultados;
     }
 
-    public function getByName(string $grupo){
-        $sql = "SELECT * FROM tb_selecoes WHERE grupo = :grupo";
+    public function getByName(string $selecao){
+        $sql = "SELECT * FROM tb_selecoes WHERE selecao = :selecao";
 
         $table = $this->connection->prepare($sql); 
-        $table->bindParam(":grupo", $grupo);
+        $table->bindParam(":selecao", $selecao);
 
         $table->execute();
 
@@ -66,20 +66,19 @@ class TeamRepository {
     }
 
     public function getByGroup(string $grupo){
-        $sql = "SELECT * FROM tb_selecoes WHERE `grupo` = :grupo";
+        $sql = "SELECT * FROM tb_selecoes WHERE grupo = :grupo";
         
         $table = $this->connection->prepare($sql); 
         $table->bindParam(":grupo", $grupo);
-    
+
         $table->execute();
-    
+
         return $table->fetchAll(PDO::FETCH_ASSOC);
     }
-    
 
     public function create(string $texto){
 
-        $sql = "INSERT INTO tb_selecoes (???) VALUES('$texto')";
+        $sql = "INSERT INTO tb_selecoes (id) VALUES('$texto')";
 
         $statement = $this->connection->exec($sql);
 

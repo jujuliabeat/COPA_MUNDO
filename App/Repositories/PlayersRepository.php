@@ -18,19 +18,19 @@ class PlayersRepository {
     public function getAll(){
         $sql = "SELECT * FROM tb_jogadores";
 
-        $table = $this->connection->query($sql);
+        $table = $this->connection->query($sql); 
         $resultados = $table->fetchAll(PDO::FETCH_ASSOC);
 
         return $resultados;
     }
 
-    public function getRandomPlayers(int $numberOfPlayers){
+    // public function getRandomPlayers(int $numberOfPlayers){
 
-        $sql = "SELECT * FROM tb_jogadores as j INNER JOIN tb_selecoes as s ON j.selecao = s.id ORDER BY RAND() LIMIT $numberOfPlayers";
+    //     $sql = "SELECT * FROM tb_jogadores as j INNER JOIN tb_selecoes as s ON j.selecao = s.id ORDER BY RAND() LIMIT $numberOfPlayers";
 
-        $table = $this->connection->query($sql);
-        return $table->fetchAll(PDO::FETCH_ASSOC);
-    }
+    //     $table = $this->connection->query($sql);
+    //     return $table->fetchAll(PDO::FETCH_ASSOC);
+    // }
 
     public function getById(int $id){
         $sql = "SELECT * FROM tb_jogadores WHERE id = :id";
@@ -59,7 +59,7 @@ class PlayersRepository {
     public function getByTeamId(int $idSelecao){
         $sql = "SELECT * FROM tb_jogadores WHERE selecao = :idSelecao";
 
-        $table = $this->connection->prepare($sql);
+        $table = $this->connection->prepare($sql); 
         $table->bindParam(":idSelecao", $idSelecao);
 
         $table->execute();
@@ -67,15 +67,16 @@ class PlayersRepository {
         return $table->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getByPosition(string $position){
+     public function getByPosition(string $posicao){
         $sql = "SELECT * FROM tb_jogadores WHERE posicao = :posicao";
 
-        $table = $this->connection->prepare($sql);
-        $table->bindParam(":posicao", $position);
+        $table = $this->connection->prepare($sql); 
+        $table->bindParam(":posicao", $posicao);
 
         $table->execute();
 
         return $table->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
 }

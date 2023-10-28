@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Copa do Mundo</title>
 
     <link rel="stylesheet" href="http://localhost:8080/Public/assets/styles/bootstrap.min.css">
     <link rel="stylesheet" href="http://localhost:8080/Public/assets/styles/style.css">
@@ -20,7 +20,7 @@
             <a class="navbar-brand" href="http://localhost:8080/">
                 <img src="http://localhost:8080/Public/images/logos/logo.webp" height="80px" width="auto" style="text-align: center;" alt="">
             </a>
-
+            
             <ul class="nav">
                 <li class="nav-item">
                   <a class="nav-link active" href="http://localhost:8080/">Home (aleatórios)</a>
@@ -36,62 +36,43 @@
         
         </header>
 
-        <h2 class="title">Album de IFigurinhas</h2>
+        <h2 class="title">Album de Figurinhas</h2>
         <h5 class="subtitle">Catar 2022</h5>
-
       
         <div class="card-container">
             <div id="players" class="listar-figurinhas row">
 
+
+                <?php foreach ($players as $player) : ?>
+
                 <div class="col-sm-6 col-md-4 col-lg-3">
 
-                    <div class="profile-card-5"  style="background: <?= $player[0]['cor'] ?>; max-height: auto;">
-
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="profile-name"><?= $player[0]['selecao'] ?></div>
-                                <div class="profile-abrev"><?= $player[0]['abrev'] ?></div>
-
-                                <div class="profile-group">
-                                    <span>grupo </span> <?= $player[0]['grupo'] ?>
-                                </div>
-                            </div>
-                            <div class="col-7">
-                                <img src="http://localhost:8080/Public/images/emblem/<?= strtolower($player[0]['selecao'])?>.png" class="img img-responsive">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php foreach ($player as $play) : ?>
-                
-                <div class="col-sm-6 col-md-4 col-lg-3">
-
-                    <div class="profile-card-6" style="background: <?= $play['selecao']['cor'] ?>">
+                    <div class="profile-card-6" style="background: <?= $players['cor'] ?>">
 
                         <?php
-                        if(!file_exists(__DIR__ . "/../../Public/images/players/{$play['selecao']}/{$play['nome']}.png")) {
+                        if(!file_exists(__DIR__ . "/../../Public/images/players/{$player['selecao']}/{$player['nome']}.png")) {
 
                             $path = "http://localhost:8080/Public/images/players/default.png";
                         } else {
-                            $path = "http://localhost:8080/Public/images/players/{$play['selecao']}/{$play['nome']}.png";
+                            $path = "http://localhost:8080/Public/images/players/{$player['selecao']}/{$player['nome']}.png";
                         }
                         ?>
 
-                        <img src="http://localhost:8080/Public/images/escudos/<?= strtolower($play['selecao'])?>.png" class="escudo">
+                        <img src="http://localhost:8080/Public/images/escudos/<?= strtolower($player['selecao'])?>.png" class="escudo">
 
                         <img src="<?= $path ?>" class="img img-responsive">
-                        <div class="profile-name"><?= $play['nome'] ?></div>
-                        <div class="profile-position"><?= $play['posicao'] ?></div>
+                        <div class="profile-name"><?= $player['nome'] ?></div>
+                        <div class="profile-position"><?= $player['posicao'] ?></div>
                         <div class="profile-overview">
                             <div class="profile-overview">
                                 <div class="row text-center">
 
                                     <div class="col-xs-4">
-                                        <h3 class="mb-0"><?= $play['alt'] ?></h3>
+                                        <h3 class="mb-0"><?= $player['alt'] ?></h3>
                                         <p>altura</p>
                                     </div>
                                     <div class="col-xs-4">
-                                        <h3 class="mb-0"><?= $play['peso'] ?></h3>
+                                        <h3 class="mb-0"><?= $player['peso'] ?></h3>
                                         <p>peso</p>
                                     </div>
 

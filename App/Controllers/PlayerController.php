@@ -19,9 +19,7 @@ class PlayerController {
 
     public function getAll(Request $request, Response $response, array $params){
 
-        //Procure uma arquivo TeamRepository um método que retorne uma lista de todoas as seleções;
-        //Normalmente a operação se parece com algo do tipo: SELECT * FROM ...
-        $data['players'] = $this->repository->getAll();
+        $data['player'] = $this->repository->getAll();
 
         return $this->container->view->render($response, 'player.php', $data);
     }
@@ -33,15 +31,14 @@ class PlayerController {
         $id = $params['id'];
         
         //Substitua as interrogações por "getById"
-        $data['players'] = $this->repository->getById($id);
-
+        $data['player'] = $this->repository->getById($id);
 
         // print "<h1>Essa rota não possui uma tela associada</h1><br/>";
 
         // print_r($data);
         // exit;
 
-        return $this->container->view->render($response, 'single_player.php', $data);
+        return $this->container->view->render($response, 'player.php', $data);
     }
 
     public function getByName(Request $request, Response $response, array $params){
@@ -51,37 +48,42 @@ class PlayerController {
         $name = $params['name'];
 
         //Substitua as interrogações por "getByName"
-        $data['players'] = $this->repository->getByName($name);
+        $data['player'] = $this->repository->getByName($name);
 
         // print "<h1>Essa rota não possui uma tela associada</h1><br/>";
         // print_r($data);
         // exit;
 
-        return $this->container->view->render($response, 'single_player.php', $data);
+        return $this->container->view->render($response, 'player.php', $data);
     }
 
     public function getByTeamId(Request $request, Response $response, array $params){
-        $teamId = $params['id'];
+        $idSelecao = $params['idSelecao'];
+        
+        $data['player'] = $this->repository->getByTeamId($idSelecao);
+        // print "<h1>Essa rota não possui uma tela associada</h1><br/>";
+        // print_r($data);
+        // exit;
 
-        $data['players'] = $this->repository->getByTeamId($teamId);
+        return $this->container->view->render($response,  'player.php', $data);
+    }
 
-         /*print "<h1>Essa rota não possui uma tela associada</h1><br/>";
-         print_r($data);
-         exit;*/
+    public function getByPosition(Request $request, Response $response, array $params) {
+        $posicao = $params['posicao'];
+        
+        $data['player'] = $this->repository->getByPosition($posicao);
+
+        // print "<h1>Essa rota não possui uma tela associada</h1><br/>";
+        // print_r($data);
+        // exit;
 
         return $this->container->view->render($response, 'player.php', $data);
     }
 
-    public function getByPosition(Request $request, Response $response, array $params){
-        $playerPos = $params['pos'];
+    public function getBySearchParam(Request $request, Response $response, array $params) {
+       
+        // Por Fazer ainda
 
-        $data['players'] = $this->repository->getByPosition($playerPos);
-
-//        print "<h1>Essa rota não possui uma tela associada</h1><br/>";
-//        print_r($data);
-//        exit;
-
-        return $this->container->view->render($response, 'player.php', $data);
     }
-
 }
+
