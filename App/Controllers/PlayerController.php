@@ -82,8 +82,19 @@ class PlayerController {
 
     public function getBySearchParam(Request $request, Response $response, array $params) {
        
-        // Por Fazer ainda
+        // Lembrar de perguntar p professor
 
+        // $id = $params['id'];
+        // $name = $params['name'];
+        // $idSelecao = $params['idSelecao'];
+        // $posicao = $params['posicao'];
+
+        // $data['player'] = $this->repository->getById($id);
+        // $data['player'] = $this->repository->getByName($name);
+        // $data['player'] = $this->repository->getByTeamId($idSelecao);
+        // $data['player'] = $this->repository->getByPosition($posicao);
+
+        // return $this->container->view->render($response, 'player.php', $data);
     }
 }
 

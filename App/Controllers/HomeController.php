@@ -34,7 +34,7 @@ class HomeController {
         //Substitua as interrogações pelo número de jogadores que você deseja que seja exibido na home page
         $numberOfPlayers = 11;
 
-        $data['players'] = $this->repository->getRandomPlayers($numberOfPlayers);
+        $data['player'] = $this->repository->getRandomPlayers($numberOfPlayers);
 
         //Substitua as interrogaçõe pela variável $data. Os valores dessa variável estarão disponíveis no template "home.php"
         //Neste exemplo, haverá disponível no template uma variável chamada $players 

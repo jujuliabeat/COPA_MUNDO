@@ -24,13 +24,13 @@ class PlayersRepository {
         return $resultados;
     }
 
-    // public function getRandomPlayers(int $numberOfPlayers){
+    public function getRandomPlayers(int $numberOfPlayers){
 
-    //     $sql = "SELECT * FROM tb_jogadores as j INNER JOIN tb_selecoes as s ON j.selecao = s.id ORDER BY RAND() LIMIT $numberOfPlayers";
+        $sql = "SELECT * FROM tb_jogadores as j INNER JOIN tb_selecoes as s ON j.selecao = s.id ORDER BY RAND() LIMIT $numberOfPlayers";
 
-    //     $table = $this->connection->query($sql);
-    //     return $table->fetchAll(PDO::FETCH_ASSOC);
-    // }
+        $table = $this->connection->query($sql);
+        return $table->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function getById(int $id){
         $sql = "SELECT * FROM tb_jogadores WHERE id = :id";

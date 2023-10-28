@@ -47,54 +47,54 @@
 
                 <div class="col-sm-6 col-md-4 col-lg-3">
 
-                    <div class="profile-card-5"  style="background: <?= $players[0]['cor'] ?>; max-height: 400px;">
+                    <div class="profile-card-5"  style="background: <?= $player[0]['cor'] ?>; max-height: 400px;">
 
                         <div class="row">
                             <div class="col-5">
-                                <div class="profile-name"><?= $players[0]['selecao'] ?></div>
-                                <div class="profile-abrev"><?= $players[0]['abrev'] ?></div>
+                                <div class="profile-name"><?= $player[0]['selecao'] ?></div>
+                                <div class="profile-abrev"><?= $player[0]['abrev'] ?></div>
 
                                 <div class="profile-group">
-                                    <span>grupo </span> <?= $players[0]['grupo'] ?>
+                                    <span>grupo </span> <?= $player[0]['grupo'] ?>
                                 </div>
                             </div>
                             <div class="col-7">
-                                <img src="<?= $BASE_PATH ?>/Public/images/emblem/<?= strtolower($players[0]['selecao'])?>.png" class="img img-responsive">
+                                <img src="<?= $BASE_PATH ?>/Public/images/emblem/<?= strtolower($player[0]['selecao'])?>.png" class="img img-responsive">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <?php foreach ($players as $player) : ?>
+                <?php foreach ($player as $play) : ?>
 
                 <div class="col-sm-6 col-md-4 col-lg-3">
 
-                    <div class="profile-card-6" style="background: <?= $player['cor'] ?>">
+                    <div class="profile-card-6" style="background: <?= $play['cor'] ?>">
 
                         <?php
-                        if(!file_exists(__DIR__ . "/../../Public/images/players/{$player['selecao']}/{$player['nome']}.png")) {
+                        if(!file_exists(__DIR__ . "/../../Public/images/players/{$play['selecao']}/{$play['nome']}.png")) {
 
                             $path = "{$BASE_PATH}/Public/images/players/default.png";
                         } else {
-                            $path = "{$BASE_PATH}/Public/images/players/{$player['selecao']}/{$player['nome']}.png";
+                            $path = "{$BASE_PATH}/Public/images/players/{$play['selecao']}/{$play['nome']}.png";
                         }
                         ?>
 
-                        <img src="<?= $BASE_PATH ?>/Public/images/escudos/<?= strtolower($player['selecao'])?>.png" class="escudo">
+                        <img src="<?= $BASE_PATH ?>/Public/images/escudos/<?= strtolower($play['selecao'])?>.png" class="escudo">
 
                         <img src="<?= $path ?>" class="img img-responsive">
-                        <div class="profile-name"><?= $player['nome'] ?></div>
-                        <div class="profile-position"><?= $player['posicao'] ?></div>
+                        <div class="profile-name"><?= $play['nome'] ?></div>
+                        <div class="profile-position"><?= $play['posicao'] ?></div>
                         <div class="profile-overview">
                             <div class="profile-overview">
                                 <div class="row text-center">
 
                                     <div class="col-xs-4">
-                                        <h3 class="mb-0"><?= $player['alt'] ?></h3>
+                                        <h3 class="mb-0"><?= $play['alt'] ?></h3>
                                         <p>altura</p>
                                     </div>
                                     <div class="col-xs-4">
-                                        <h3 class="mb-0"><?= $player['peso'] ?></h3>
+                                        <h3 class="mb-0"><?= $play['peso'] ?></h3>
                                         <p>peso</p>
                                     </div>
 
